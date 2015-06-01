@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">WallofFire</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name = "animals">
+        <item>Ape</item>
+        <item>Camel</item>
+        <item>Donkey</item>
+        <item>Eagle</item>
+        <item>Falcon</item>
+        <item>Goose</item>
+        <item>Lizard</item>
+        <item>Quail</item>
+        <item>Rhino</item>
+        <item>Zebra</item>
+    </string-array>
+
+    <string-array name="Target">
+        <item>Filter</item>
+        <item>Nat</item>
+
+    </string-array>
+    <string-array name="Input">
+        <item>Accept</item>
+        <item>Reject</item>
+        <item>Drop</item>
+
+    </string-array>
+    <string-array name="Protocol">
+        <item>UDP</item>
+        <item>TCP</item>
+        <item>ICMP</item>
+
+    </string-array>
+
+    <string-array name="Interface">
+        <item>Eth0</item>
+        <item>Eth1</item>
+
+    </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

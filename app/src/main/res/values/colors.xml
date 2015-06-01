@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="button_bg_color">#E65100</color>
+    <color name="button_border_color">#88E65100</color>
+    <color name="edittext_border_color">#55FF9800</color>
+    <color name="lin_border_color">#220091EA</color>
+    <color name="lin_bg_color">#220091EA</color>
+    
+    <color name="ediitext_text_color">#3E2723</color>
+    
+    <!-- <color name="row_color2">#3E2723</color> -->
+    <color name="actionbar_color">#E65100</color>
+    
+    <color name="row_color1">#22E65100</color>
+    <color name="row_color2">#55E65100</color>
+    
+
+</resources>
