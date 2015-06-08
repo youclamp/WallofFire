@@ -26,7 +26,7 @@
             android:layout_width="105dp"
             android:paddingRight="15dp"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner"
+            android:id="@+id/spin_target"
             android:entries="@array/Target"/>
 
         <LinearLayout
@@ -60,7 +60,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner2"
+            android:id="@+id/spin_input"
             android:entries="@array/Input"
             android:layout_gravity="center_vertical" />
             </LinearLayout>
@@ -82,7 +82,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner3"
+        android:id="@+id/spin_output"
         android:entries="@array/Input"
         android:layout_gravity="right" />
                 </LinearLayout>
@@ -103,7 +103,7 @@
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner23"
+                    android:id="@+id/spin_pre_routing"
                     android:entries="@array/Input"
                     android:layout_gravity="right" />
             </LinearLayout>
@@ -124,7 +124,7 @@
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner25"
+                    android:id="@+id/spin_post_routing"
                     android:entries="@array/Input"
                     android:layout_gravity="right" />
             </LinearLayout>
@@ -146,7 +146,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/edit_rule_number"
             android:layout_weight="0.67"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -168,7 +168,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/Input"
-            android:id="@+id/spinner4" />
+            android:id="@+id/spin_action" />
     </LinearLayout>
 
     <LinearLayout
@@ -186,7 +186,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner5"
+            android:id="@+id/spin_protocol"
             android:entries="@array/Protocol"
             />
     </LinearLayout>
@@ -206,7 +206,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner6"
+            android:id="@+id/spin_interface"
             android:entries="@array/Interface"/>
     </LinearLayout>
 
@@ -227,7 +227,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/edit_port"
             android:layout_marginLeft="20dp" />
     </LinearLayout>
 
@@ -248,7 +248,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/edit_ip_address"
             android:layout_marginLeft="20dp" />
     </LinearLayout>
 
@@ -256,7 +256,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/button"
+        android:id="@+id/submit"
         android:layout_gravity="center_horizontal|bottom" />
 
 

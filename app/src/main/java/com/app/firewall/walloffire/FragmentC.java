@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +41,12 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
     String result = null;
     InputStream is = null;
 
+    //public arraylist to store data in async and use in adapter
+    ArrayList<ListModel> ruleList = new ArrayList<ListModel>();
+    ListModel lm = new ListModel();
+
     //url to get json array
-    private static String url = "http://animatrix.comlu.com/firewall/Sync2Phone.php";
+    private static String url = "http://animatrix.comlu.com/firewall/mySQLtoJson.php";
 
     //json node names
     private static final String TAG_USER = "data";
@@ -52,6 +57,7 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
     public FragmentC CustomListView = null;
     public ArrayList<ListModel> CustomListViewValuesArr = new ArrayList<ListModel>();
     ArrayList<ListModel> searchResult = GetSearchResult();
+    public ArrayList<ListModel> searchResult2 = GetSearchResult();
     public List<HashMap<String, String>> jsonlist = new ArrayList<>();
 
     public FragmentC() {
@@ -78,14 +84,16 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
         TextView txt1 = (TextView) view.findViewById(R.id.frg_C_text);
         //txt1.setText("display this text");
         ListView listview = (ListView) view.findViewById(R.id.list);
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+       /* String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
                 "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2" };
+                "Linux", "OS/2" };*/
 
-        int[] res = new int[] {R.id.txt_rule, R.id.txt_target, R.id.txt_chain,
-                R.id.txt_interface, R.id.txt_ip, R.id.txt_port, R.id.txt_protocol, R.id.txt_target2};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_cell, R.id.txt_port, values);
-        listview.setAdapter(new CustomAdapter(getActivity(), searchResult));
+        //int[] res = new int[] {R.id.txt_rule, R.id.txt_target, R.id.txt_chain,
+          //      R.id.txt_interface, R.id.txt_ip, R.id.txt_port, R.id.txt_protocol, R.id.txt_target2};
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_cell, R.id.txt_port, values);
+        //listview.setAdapter(new CustomAdapter(getActivity(), searchResult));
+        listview.setAdapter(new CustomAdapter(getActivity(), ruleList));
+        Log.d("wall", "-->" + ruleList.toString() );
         //CustomAdapter adapter2 = new CustomAdapter(getActivity(),  CustomListViewValuesArr, Resources.getSystem());
         //ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.id.list, values);
         //listview.setAdapter(adapter2);
@@ -104,28 +112,6 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
         sr.setProtocol("tcp");
         sr.setTarget("ACCEPT");
         sr.setTarget2("INPUT");
-        result.add(sr);
-
-        sr = new ListModel();
-        sr.setRule_no("3");
-        sr.setChain("filter");
-        sr.setInterfaces("eth0");
-        sr.setIp("192.148.44.23");
-        sr.setPort("63");
-        sr.setProtocol("tcp");
-        sr.setTarget("DROP");
-        sr.setTarget2("OUTPUT");
-        result.add(sr);
-
-        sr = new ListModel();
-        sr.setRule_no("3");
-        sr.setChain("filter");
-        sr.setInterfaces("eth0");
-        sr.setIp("192.148.44.23");
-        sr.setPort("63");
-        sr.setProtocol("tcp");
-        sr.setTarget("DROP");
-        sr.setTarget2("OUTPUT");
         result.add(sr);
 
         return result;
@@ -150,11 +136,11 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            //pDialog = new ProgressDialog(MainActivity.this);
-//            pDialog.setMessage("Getting data...");
-  //          pDialog.setIndeterminate(false);
-    //        pDialog.setCancelable(true);
-            //pDialog.show();
+            pDialog = new ProgressDialog(getActivity() );
+            pDialog.setMessage("Getting data...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         @Override
@@ -177,27 +163,53 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
 
         @Override
         protected void onPostExecute(JSONObject json) {
-            //pDialog.dismiss();
+            pDialog.dismiss();
             try{
                 //getting json array
+                ruleList.clear();
                 user = json.getJSONArray(TAG_USER);
-                JSONObject c = user.getJSONObject(1);
+                //JSONObject c = user.getJSONObject(1);
                 //storing them in variable
-                String one = c.getString(TAG_ID);
-                String two = c.getString("Name");
-                String three = c.getString("Status");
+                for(int i = 0; i <= user.length()-1; i++) {
+                    JSONObject c = user.getJSONObject(i);
+                    Log.d("wall", "length is " + user.length());
+                    String one = c.getString("rulenum");
+                    String two = c.getString("target");
+                    String three = c.getString("protocol");
+                    String four = c.getString("interface");
+                    String five = c.getString("port");
+                    String six = c.getString("ipaddress");
 
-                Log.e("wall", "print :  " + one + "two= " + two + three );
+                    Log.e("wall", "print :  " + one + "two= " + two + three + "four" + four);
 
-                HashMap<String, String> Amap = new HashMap<String, String>();
-                Amap.put("rule", one);
-                jsonlist.add(Amap);
+                    lm = new ListModel();
+                    lm.setRule_no(one);
+                    lm.setTarget(two);
+                    lm.setProtocol(three);
+                    lm.setInterfaces(four);
+                    lm.setPort(five);
+                    lm.setIp(six);
+                    ruleList.add(lm);
+                }
+                pDialog.dismiss();
+
+
 
             }catch (JSONException e){
                 Log.e("wall", "exception in getting json array " + e.toString() );
             }
 
+
             super.onPostExecute(json);
         }
+
+
+
+
+    }
+
+    public interface AsyncResponse{
+
+
     }
 }
