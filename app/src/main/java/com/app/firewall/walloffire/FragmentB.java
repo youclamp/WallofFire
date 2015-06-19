@@ -19,6 +19,7 @@ import android.widget.Spinner;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class FragmentB extends Fragment {
     EditText Rule_number, Port, Ip_address;
     Button Submit;
     String target, input, output, pre, post, action, protocol, interfacetxt, rule, port, ip;
-    private String URL_NEW_RULE = "http://www.animatrix.comlu.com/firewall/XXXX.php";
+    private String URL_NEW_RULE = "http://www.animatrix.comlu.com/firewall/newRules.php";
 
     public FragmentB() {
         // Required empty public constructor
@@ -139,16 +140,23 @@ public class FragmentB extends Fragment {
 
             ServiceHandler serviceClient = new ServiceHandler();
             String json = serviceClient.makeServiceCall(URL_NEW_RULE, ServiceHandler.POST, listparam);
-            Log.d("wall","create new rule request; " + json);
+            Log.d("wall","create new rule request; " + listparam.toString());
 
             if(json != null){
                 try{
                     JSONObject jsonObj = new JSONObject(json);
                     boolean error = jsonObj.getBoolean("error");
                     if(!error){
-                        Log.d("wall", "Prediction was added succesfully: ")
+                        Log.d("wall", "Prediction was added succesfully: " + jsonObj.getString("message"));
+
+                    }else{
+                        Log.d("wall", "Add prediction error: " + jsonObj.getString("message"));
                     }
+                }catch (JSONException e){
+                    e.printStackTrace();
                 }
+            } else {
+                Log.d("wall", "JSON data error!!");
             }
             return null;
         }
