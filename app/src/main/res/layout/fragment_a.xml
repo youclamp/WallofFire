@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFCC00"
+    android:orientation="vertical"
     tools:context="com.app.firewall.walloffire.FragmentA">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,7 +12,15 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is Fragment A"
-        android:visibility="visible"/>
+        android:text="Swipe left"
+        android:visibility="visible"
+        android:textIsSelectable="false"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:background="@drawable/swipe"/>
 
 </LinearLayout>

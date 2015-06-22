@@ -46,8 +46,8 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
     ListModel lm = new ListModel();
 
     //url to get json array
-    private static String url = "http://animatrix.comlu.com/firewall/mySQLtoJson.php";
-
+    //private static String url = "http://animatrix.comlu.com/firewall/mySQLtoJson.php";
+    private static String url = "http://104.131.187.31/mySQLtoJson.php";
     //json node names
     private static final String TAG_USER = "data";
     private static final String TAG_ID = "Id";
@@ -173,14 +173,22 @@ public class FragmentC extends Fragment implements AdapterView.OnItemClickListen
                 for(int i = 0; i <= user.length()-1; i++) {
                     JSONObject c = user.getJSONObject(i);
                     Log.d("wall", "length is " + user.length());
-                    String one = c.getString("rulenum");
+                    /*String one = c.getString("rulenum");
                     String two = c.getString("target");
                     String three = c.getString("protocol");
                     String four = c.getString("interface");
                     String five = c.getString("port");
-                    String six = c.getString("ipaddress");
+                    String six = c.getString("ipaddress");*/
 
-                    Log.e("wall", "print :  " + one + "two= " + two + three + "four" + four);
+                    String one = c.getString("Rule_id");
+                    String two = c.getString("Target_id");
+                    String three = c.getString("Protocol");
+                    String four = c.getString("User_id");
+                    String five = c.getString("Port");
+                    String six = c.getString("Ip_adress");
+                    Log.e("wall", "print :  --" +  "two=" + two + "--" + three + "four" + four);
+
+                    if(two.equalsIgnoreCase("1")){two = "ACCEPT"; }else if(two.equalsIgnoreCase("2")){two = "REJECT";}else if(two.equalsIgnoreCase("3")){ two = "DROP";}
 
                     lm = new ListModel();
                     lm.setRule_no(one);

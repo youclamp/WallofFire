@@ -4,8 +4,8 @@ public class Constants {
 
 	public static Boolean noConnFlag = false;
 
-	public static final String IP = "http://www.animatrix.comlu.com/firewall/check.php";
-
+	//public static final String IP = "http://www.animatrix.comlu.com/firewall/check.php";
+    public static final String IP = "http://104.131.187.31/check.php";
 	public static final String SIGN_IN = IP;
 
 	public static final String SERVER_RESPONSE = "server_response";

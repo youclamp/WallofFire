@@ -36,8 +36,8 @@ public class FragmentB extends Fragment {
     EditText Rule_number, Port, Ip_address;
     Button Submit;
     String target, input, output, pre, post, action, protocol, interfacetxt, rule, port, ip;
-    private String URL_NEW_RULE = "http://www.animatrix.comlu.com/firewall/newRules.php";
-
+    //private String URL_NEW_RULE = "http://www.animatrix.comlu.com/firewall/newRules.php";
+    private String URL_NEW_RULE = "http://104.131.187.31/newRules.php";
     public FragmentB() {
         // Required empty public constructor
     }
@@ -121,22 +121,22 @@ public class FragmentB extends Fragment {
 
         @Override
         protected Void doInBackground(String... params) {
-            String txt1 = params[0];
-            String txt2 = params[1];
-            String txt3 = params[2];
-            String txt4 = params[3];
-            String txt5 = params[4];
-            String txt6 = params[5];
+            String chain_db = params[1];
+            String action_db = params[5];
+            String protocol_db = params[6];
+            String port_db = params[9];
+            String ipaddress_db = params[10];
+            //String txt6 = params[10];
 
             //preparing post params
             List<NameValuePair> listparam = new ArrayList<NameValuePair>();
-            listparam.add(new BasicNameValuePair("rule_number", txt1));
-            listparam.add(new BasicNameValuePair("rule_number", txt2));
-            listparam.add(new BasicNameValuePair("rule_number", txt3));
-            listparam.add(new BasicNameValuePair("rule_number", txt4));
-            listparam.add(new BasicNameValuePair("rule_number", txt5));
-            listparam.add(new BasicNameValuePair("rule_number", txt6));
-            listparam.add(new BasicNameValuePair("rule_number", txt6));
+            listparam.add(new BasicNameValuePair("chain", chain_db));
+            listparam.add(new BasicNameValuePair("action", action_db));
+            listparam.add(new BasicNameValuePair("protocol", protocol_db));
+            listparam.add(new BasicNameValuePair("port", port_db));
+            listparam.add(new BasicNameValuePair("ipaddress", ipaddress_db));
+            //listparam.add(new BasicNameValuePair("ip_address", txt6));
+            //listparam.add(new BasicNameValuePair("chain", txt6));
 
             ServiceHandler serviceClient = new ServiceHandler();
             String json = serviceClient.makeServiceCall(URL_NEW_RULE, ServiceHandler.POST, listparam);

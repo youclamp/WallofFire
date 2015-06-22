@@ -69,11 +69,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         tab1.setTabListener(this);
 
         ActionBar.Tab tab2 = actionBar.newTab();
-        tab2.setText("Tab 2");
+        tab2.setText("INSERT");
         tab2.setTabListener(this);
 
         ActionBar.Tab tab3 = actionBar.newTab();
-        tab3.setText("Tab 3");
+        tab3.setText("LIST");
         tab3.setTabListener(this);
 
         actionBar.addTab(tab1);

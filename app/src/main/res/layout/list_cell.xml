@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rule No:  "
+            android:text="Rule ID:  "
             android:id="@+id/textView" />
 
         <TextView
@@ -41,7 +41,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Interface:  "
+            android:text="User ID:  "
             android:id="@+id/textView5" />
 
         <TextView
@@ -80,7 +81,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Port:  "
+            android:text="Ip-address:  "
             android:id="@+id/textView6" />
 
         <TextView
@@ -97,7 +98,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ip-addres:  "
+            android:text="Port:  "
             android:id="@+id/textView7" />
 
         <TextView
@@ -114,7 +115,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chain:  "
+            android:text="Protocol:  "
             android:id="@+id/textView8" />
 
         <TextView
@@ -126,7 +127,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"

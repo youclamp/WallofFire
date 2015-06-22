@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AA12BB"
+    android:background="#a7b80608"
     android:orientation="vertical"
     tools:context="com.app.firewall.walloffire.FragmentB">
 
@@ -246,7 +246,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="text"
             android:ems="10"
             android:id="@+id/edit_ip_address"
             android:layout_marginLeft="20dp" />
